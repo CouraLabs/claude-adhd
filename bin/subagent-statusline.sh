@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Claude Code subagent status line (one row per task):
-#   name ∙ description ∙ model effort ∙ tokens/context window
+#   name ❘ description ❘ model effort ❘ tokens/context window
 input=$(cat)
 transcript=$(echo "$input" | jq -r '.transcript_path // ""' 2>/dev/null)
 
@@ -14,7 +14,7 @@ C_FABLE=$(rgb 187 154 247);
 C_WHITE=$(rgb 255 255 255);
 C_OFFWHITE=$(rgb 220 215 200);
 
-SEP="${M} ∙ ${R}"
+SEP=$'\033[2;38;2;55;55;55m ❘ \033[0m'
 I_CONTEXT="⛁";
 
 # Gradient blue (0%) -> red (100%)
@@ -53,14 +53,14 @@ while IFS= read -r row; do
   fi
 
   case "$effort" in
-    low)    eicon="▶";   epos=0 ;;
-    medium) eicon="▶▷";  epos=25 ;;
-    high)   eicon="▶▶";  epos=50 ;;
-    xhigh)  eicon="▶▶▷"; epos=75 ;;
-    max)    eicon="▶▶▶"; epos=100 ;;
-    *)      eicon="" ;;
+    low)    elabel="low";   epos=0 ;;
+    medium) elabel="med";   epos=25 ;;
+    high)   elabel="high";  epos=50 ;;
+    xhigh)  elabel="xhigh"; epos=75 ;;
+    max)    elabel="max";   epos=100 ;;
+    *)      elabel="" ;;
   esac
-  if [ -n "$eicon" ]; then m+="${m:+ }$(grad "$epos")${eicon} ${effort}${R}"
+  if [ -n "$elabel" ]; then m+="${m:+ }$(grad "$epos")${elabel}${R}"
   elif [ -n "$effort" ]; then m+="${m:+ }${C_MUTED}$(fmt_tok "$effort")${R}"; fi
   [ -n "$m" ] && line+="${SEP}${m}"
 

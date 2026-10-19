@@ -33,7 +33,7 @@
     "promptBorderShimmer": "rgb(50,122,255)",
     "bashBorder": "rgb(234,118,203)",
     "selectionBg": "rgb(204,208,218)",
-    "userMessageBackground": "rgb(230,233,239)",
+    "userMessageBackground": "rgb(0,0,0)",
     "userMessageBackgroundHover": "rgb(220,224,232)",
     "red_FOR_SUBAGENTS_ONLY": "rgb(210,15,57)",
     "blue_FOR_SUBAGENTS_ONLY": "rgb(30,102,245)",

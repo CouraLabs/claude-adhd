@@ -32,6 +32,9 @@ Enable with `/output-style coura-labs:ADHD`.
 ### Subagent status line
 `bin/subagent-statusline.sh` — one row per running subagent: name, description, model, effort, and tokens vs. context window.
 
+### `/account-usage` command
+`commands/account-usage.md` + `bin/account-usage.sh` — current 5h/7d rate limits with reset times (cached by the status line), plus token usage (input, output, cache write/read, total) for the last 24h, 7d, 30d, 60d, 90d and all time, summed over every local transcript including subagents. Colored with emoji gauges.
+
 ### Setup skill
 `skills/setup-statusline.md` — walks Claude through enabling the status line.
 
